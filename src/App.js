@@ -1,13 +1,13 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-
 // import Greeting from './Components/Greeting';
 // import {IdGen,NewId} from  './Components/IDGEN';
 // import greet, {idGen as idGenerator, Hello, getThis} from './tools';
 // import * as newObj from './tools';
-import User from './Components/User';
+// import User from './Components/User';
 // import {SomeText,SecondText,ThirdText}  from './Components/Bulk';
+import Input from './Components/Input';
 
 function App() {
    // const {Hello} = newObj;
@@ -19,9 +19,10 @@ function App() {
   return (
     <div className="App">
 
-      <User name='Bill' surname='Gates'/>
+      {/* <User name='Bill' surname='Gates'/>
       <User name='Jack' surname='Sparrow'/>
-      <User name='Kulie' surname='Minogue'/>
+      <User name='Kulie' surname='Minogue'/> */}
+      <Input/>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" /> */}
         {/* <p>

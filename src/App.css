@@ -45,3 +45,26 @@
   font-size: 36px;
   color: #e94ecf;
 }
+.input{
+  display: block;
+  width: 70%;
+  height: 60px;
+  margin: auto;
+  margin-bottom: 80px;
+  margin-top: 80px;
+  font-size: 20px;
+}
+.button{
+
+  display: block;
+  margin: auto;
+  width: 160px;
+  height: 40px;
+  color: white;
+  background-color: aqua;
+  font-size: 20px;
+  margin-bottom: 130px;
+}
+.text{
+  font-size: 30px;
+}
