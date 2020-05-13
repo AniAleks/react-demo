@@ -7,7 +7,8 @@ import './App.css';
 // import * as newObj from './tools';
 // import User from './Components/User';
 // import {SomeText,SecondText,ThirdText}  from './Components/Bulk';
-import Input from './Components/Input';
+// import Input from './Components/Input';
+import ToDo from './Components/ToDo'
 
 function App() {
    // const {Hello} = newObj;
@@ -22,7 +23,7 @@ function App() {
       {/* <User name='Bill' surname='Gates'/>
       <User name='Jack' surname='Sparrow'/>
       <User name='Kulie' surname='Minogue'/> */}
-      <Input/>
+      <ToDo/>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" /> */}
         {/* <p>

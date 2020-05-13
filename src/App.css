@@ -68,3 +68,10 @@
 .text{
   font-size: 30px;
 }
+.tasksdiv{
+  display: inline-block;
+  border: 10px salmon solid;
+  margin:10px;
+  width: 350px;
+  height: 160px;
+}
