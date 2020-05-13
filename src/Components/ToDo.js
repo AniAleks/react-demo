@@ -6,8 +6,7 @@ import Task from './Task';
 class ToDo extends Component {
   state={
       inputValue:'',
-      newTask:'',
-      tasks:[]
+      tasks:[],
   }
   idGenerator(){
     return Math.random().toString(32).slice(2);
@@ -21,6 +20,7 @@ class ToDo extends Component {
   handlebuttonClick=()=>{
       this.setState({tasks:[...this.state.tasks,{task:this.state.inputValue,title:this.state.inputValue.slice(0,10)}],
       inputValue:''});
+     
   }
       
     render() {
@@ -30,6 +30,7 @@ class ToDo extends Component {
                 <button className="button" onClick={this.handlebuttonClick}>Create Task</button>
                 {
                  this.state.tasks.map((el) =>  <div className='tasksdiv' key={this.idGenerator()}> <Task  title={el.title} task={el.task}/></div> )
+                
                 }
          
             </Fragment>
