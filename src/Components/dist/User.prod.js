@@ -1,1 +1,0 @@
-"use strict";var _react=_interopRequireDefault(require("react")),_Name=_interopRequireDefault(require("./Name")),_Surname=_interopRequireDefault(require("./Surname"));function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var User=function(){};

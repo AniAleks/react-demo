@@ -1,0 +1,43 @@
+
+  .tasksdiv{
+    display: inline-block;
+    border: 10px salmon solid;
+    margin:10px;
+    width: 350px;
+    height: 200px;
+    box-shadow:10px  10px 10px white;
+
+  }
+  .taskbutton{
+    width: 90px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom:10px;
+    box-shadow:7px  7px 10px black;
+  }
+  .TaskCard{
+    margin:20px;
+    height: 400px;
+    overflow: scroll;
+  }
+  .Taskicon{
+    font-size: 30px;
+  }
+  .inlineblock{
+    display: inline-block;
+  }
+  .headline{
+    font-size: 20px;
+  }
+  .viewButton{
+    font-size: 18px;
+    width: 200px;
+    margin-top:10px;
+    box-shadow:7px  7px 10px black;
+  }
+  /* .taskText{
+    overflow: scroll;
+    height: 50px;
+    text-align: left;
+  } */
+  

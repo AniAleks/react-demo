@@ -1,51 +1,65 @@
 import React from 'react';
-// import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-// import Greeting from './Components/Greeting';
-// import {IdGen,NewId} from  './Components/IDGEN';
-// import greet, {idGen as idGenerator, Hello, getThis} from './tools';
-// import * as newObj from './tools';
-// import User from './Components/User';
-// import {SomeText,SecondText,ThirdText}  from './Components/Bulk';
-// import Input from './Components/Input';
-import ToDo from './Components/ToDo'
+import ToDo from './Components/container/ToDo/ToDo';
+import NavMenu from './Components/NavMenu/NavMenu';
+import About from './Components/container/About/About';
+import Contact from './Components/container/Contact/Contact';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import SingleTask from './Components/container/SingleTask/SingleTask';
+import NotFound from './Components/container/NotFound/NotFound';
+import { withSnackbar } from 'notistack';
+import { connect } from 'react-redux';
+import Loader from './Components/loader/loader';
 
-function App() {
-   // const {Hello} = newObj;
-  // const components = [
-  //   <p>text 1</p>,
-  //   <p>text 2</p>,
-  //   <p>text 3</p>,
-  // ];
-  return (
-    <div className="App">
+class App extends React.Component {
 
-      {/* <User name='Bill' surname='Gates'/>
-      <User name='Jack' surname='Sparrow'/>
-      <User name='Kulie' surname='Minogue'/> */}
-      <ToDo/>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" /> */}
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Greeting/>
-      <IdGen/>
-      <NewId/>
-      <SomeText/>
-      <SecondText/>
-      <ThirdText/> */}
-    </div>
-  );
+  componentDidUpdate(prevProps) {
+    if (!prevProps.success && this.props.success) {
+      this.props.enqueueSnackbar(this.props.success, {
+        variant: 'success',
+      });
+      return;
+    }
+
+    if (!prevProps.error && this.props.error) {
+      this.props.enqueueSnackbar(this.props.error, {
+        variant: 'error',
+      });
+      return;
+    }
+  }
+
+
+  render() {
+  
+    return (
+      <div className='App'>
+        <NavMenu />
+
+        {this.props.loading && <Loader />}
+        <Switch>
+          <Route path='/' exact component={ToDo} />
+          <Route path='/about' exact component={About} />
+          <Route path='/contact' exact component={Contact} />
+          <Route path='/task/:id' exact component={SingleTask} />
+          <Route path='/404' exact component={NotFound} />
+          <Redirect to='/404' />
+        </Switch>
+
+
+      </div>
+    );
+  }
+
+
 }
 
-export default App;
+export default connect((state) => {
+  return {
+    error: state.taskReducer.error,
+    success: state.taskReducer.success,
+    loading: state.taskReducer.loading,
+  }
+
+})(withSnackbar(App));

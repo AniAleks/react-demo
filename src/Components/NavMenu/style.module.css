@@ -1,0 +1,21 @@
+.navBar{
+color: teal;
+}
+.navBrand{
+    color: #256b75;
+    font-size: 28px;
+    margin-left: 20px;
+    font-style: italic;
+}
+.navRouter{
+    color: #256b75;
+    font-size: 20px;
+    margin-left: 20px;
+    font-size: 100;
+}
+.navRouter:hover{
+    color: #17a2b8;
+}
+.active{
+    color: #17a2b8;;
+}

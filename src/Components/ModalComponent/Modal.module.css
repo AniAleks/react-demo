@@ -1,0 +1,30 @@
+.taskbutton{
+    width: 80px;
+    margin-right: 10px;
+    box-shadow:7px  7px 10px black;
+  }
+  .Taskicon{
+    font-size: 35px;
+  }
+.spanElement{
+  display: block;
+  margin: 22px;
+  font-size: 19px;
+ 
+}
+.spanElementDate{
+  display: block;
+  margin: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.modalTitle{
+text-align: center;
+  color: aqua;
+  text-transform: uppercase;
+}
+.modalHeader{
+  font-style: italic;
+  font-size: 20px;
+  color: #256b75;;
+}
