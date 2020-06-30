@@ -139,7 +139,8 @@ function Search (props){
           {sort.map(({ id, title }) =>
             <Dropdown.Item 
               key={id}
-              onClick={this.selectHandler('sort', id, title)}
+              onClick={
+            selectHandler('sort', id, title)}
               className={`${sortId === id ? classes.active : ''} ${classes.sortItem}`}
             >
               {title}

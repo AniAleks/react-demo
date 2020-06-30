@@ -7,7 +7,7 @@ import ModalComponent from '../../ModalComponent/ModalComponent';
 import Search from '../../Search/Search';
 import { connect } from 'react-redux';
 import getTasks from '../../../Store/actions/getTasks';
-// import deleteTask from '../../../Store/actions/deleteTask';
+import deleteTask from '../../../Store/actions/deleteTask';
 import deleteBulkTasks from '../../../Store/actions/deleteBulkTasks';
 
 
@@ -128,10 +128,11 @@ class ToDo extends Component {
 
     };
 
-    // deleteTask = (taskId) => () => {
-    //     console.log(taskId)
-    //     this.props.deleteTask(taskId);
-    // }
+    deleteTask = (taskId) => () => {
+        console.log(taskId)
+        this.handleModalClose(taskId);
+        this.props.deleteTask(taskId);
+    }
 
 
     render() {
@@ -231,7 +232,7 @@ class ToDo extends Component {
                         show={taskIndex !== null}
                         onHide={this.handleModalClose}
                         taskfulldata={tasks[taskIndex]}
-                        // onDelete={this.deleteTask(tasks[taskIndex].id)}
+                        onDelete={this.deleteTask(tasks[taskIndex].id)}
                         onEdit={this.handleEdit}
                     />
                 }
@@ -256,7 +257,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     getTasks,
-    // deleteTask,
+    deleteTask,
     deleteBulkTasks,
 }
 
