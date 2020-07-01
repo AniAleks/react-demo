@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classes from './style.module.css';
 
 
-class About extends Component {
-
-
+class About extends PureComponent {
 
     render() {
      
@@ -34,7 +32,7 @@ class About extends Component {
           
                
             </>
-        )
+        );
     }
 }
 

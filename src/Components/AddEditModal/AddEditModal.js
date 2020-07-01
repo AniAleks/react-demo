@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import addTask from '../../Store/actions/addTask';
 import editTask from '../../Store/actions/editTask';
-// import { useState,useEffect } from 'react';
-
-
 
 
 class AddEditModal extends Component {
@@ -114,7 +111,6 @@ class AddEditModal extends Component {
               <InputGroup.Append>
                 <Button variant="info"
                   disabled={!title}
-                  //  className={classes.newbutton}
                   onClick={this.addTask}
                 >Add New Task</Button>
               </InputGroup.Append>
@@ -122,7 +118,6 @@ class AddEditModal extends Component {
               <InputGroup.Append>
                 <Button variant="info"
                   disabled={!title}
-                  //  className={classes.newbutton}
                   onClick={this.editTask}
                 >Save Edited Task</Button>
               </InputGroup.Append>

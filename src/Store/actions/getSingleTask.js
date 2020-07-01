@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import {request} from '../../Helpers/request'
+import {request} from '../../Helpers/request';
 
 export default function getSingleTask(id){
     return (dispatch)=>{
@@ -13,4 +13,4 @@ export default function getSingleTask(id){
             dispatch({type: actionTypes.GET_TASK_FAILURE, error: error.toString()});
         });
     }
-}
+};

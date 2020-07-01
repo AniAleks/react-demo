@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,memo} from 'react';
 import { Button, InputGroup, FormControl, SplitButton, Dropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -16,8 +16,7 @@ function Search (props){
       filterTitle: '',
       date: ''
     };
-  const [searchState,changeState]= useState(defaultState)
-
+  const [searchState,changeState]= useState(defaultState);
   const sort = [
     {
       id: 'none',
@@ -73,7 +72,7 @@ function Search (props){
 
   const inputChangeHandler = (event) => {
     changeState({ ...defaultState,search: event.target.value });
-  }
+  };
 
   const submitHandler = (type) => (event)=>{
     if (type === 'reset') {
@@ -93,7 +92,7 @@ function Search (props){
      props.onSubmit(data);
      changeState(defaultState);
     }
-  }
+  };
 
   const selectHandler = (type, id, title) => () => {
     if (id === 'none') {
@@ -184,4 +183,4 @@ Search.propTypes = {
   onSubmit: PropTypes.func.isRequired
 };
 
-export default Search;
+export default memo(Search);

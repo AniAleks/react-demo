@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import {request} from '../../Helpers/request'
+import {request} from '../../Helpers/request';
 
 export default function addTask(taskData){
     return (dispatch)=>{
@@ -12,4 +12,4 @@ export default function addTask(taskData){
             dispatch({type: actionTypes.ADD_TASK_FAILURE, error: error.toString()});
         });
     }
-}
+};

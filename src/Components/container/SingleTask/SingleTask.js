@@ -11,28 +11,12 @@ import { faTrashAlt, faPenAlt } from '@fortawesome/free-solid-svg-icons';
 import { Card, Button, InputGroup } from 'react-bootstrap';
 import AddEditModal from '../../AddEditModal/AddEditModal';
 
-
-
-
 class SingleTask extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showEditModal: false,
 
-        }
-    }
-
-    componentDidMount() {
-        this.props.getSingleTask(this.props.match.params.id);
-    }
-
-
-
-    componentDidUpdate(prevProps) {
-        if (!prevProps.editTaskSuccess && this.props.editTaskSuccess) {
-            this.setState({ showEditModal: false })
-            this.props.getSingleTask(this.props.match.params.id);
         }
     }
 

@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import {request} from '../../Helpers/request'
+import {request} from '../../Helpers/request';
 
 export default function deleteBulkTasks({ tasks: tasksId }){
     return (dispatch)=>{
@@ -12,5 +12,5 @@ export default function deleteBulkTasks({ tasks: tasksId }){
             dispatch({type: actionTypes.DELETE_BULKTASKS_FAILURE, error: error.toString()});
         });
     }
-}
+};
 

@@ -12,15 +12,15 @@ import {store} from './Store/store';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
      <Provider store={store}>
     <BrowserRouter>
     <SnackbarProvider maxSnack={2}>
     <App />
 </SnackbarProvider>
 </BrowserRouter>
-</Provider>
-  </React.StrictMode>,
+</Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

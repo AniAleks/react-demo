@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,memo} from 'react';
 import {
     Modal, Button, Card
 } from 'react-bootstrap'
@@ -13,6 +13,9 @@ import PropTypes from 'prop-types';
 function TaskModal(props) {
     const { taskfulldata } = props;
 
+    useEffect(()=>{
+        console.log('Modal-DidMount, DidUpdate', );
+    });
 
     return (
         <Modal
@@ -56,4 +59,4 @@ TaskModal.propTypes = {
 };
 
 
-export default TaskModal;
+export default memo(TaskModal);

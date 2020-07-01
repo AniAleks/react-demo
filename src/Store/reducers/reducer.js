@@ -1,4 +1,3 @@
-
 import * as actionTypes from '../actionTypes';
 
 const defaultState = {
@@ -6,19 +5,19 @@ const defaultState = {
   loading: false,
   error: null,
   success: null,
-  addTaskSuccess:false,
-  editTaskSuccess:false,
-  deleteTaskSuccess:false,
-  deleteBulksuccess:false,
-  singleTask:null,
-  
+  addTaskSuccess: false,
+  editTaskSuccess: false,
+  deleteBulksuccess: false,
+  singleTask: null,
+  contact: null,
+
 
 };
 
 export default function taskReducer(state = defaultState, action) {
   let tasks = [...state.tasks];
   switch (action.type) {
-    
+
     case actionTypes.GET_TASKS_REQUEST:
       return {
         ...state,
@@ -38,7 +37,7 @@ export default function taskReducer(state = defaultState, action) {
       };
 
 
-      case actionTypes.GET_TASK_REQUEST:
+    case actionTypes.GET_TASK_REQUEST:
       return {
         ...state,
         loading: true
@@ -61,16 +60,16 @@ export default function taskReducer(state = defaultState, action) {
       return {
         ...state,
         loading: true,
-        success:null,
-        addTaskSuccess:false,
+        success: null,
+        addTaskSuccess: false,
       };
     case actionTypes.ADD_TASK_SUCCESS:
       return {
         ...state,
         loading: false,
-        tasks: [...state.tasks,action.task],
-        success:'Task was added successfully',
-        addTaskSuccess:true,
+        tasks: [...state.tasks, action.task],
+        success: 'Task was added successfully',
+        addTaskSuccess: true,
 
       };
     case actionTypes.ADD_TASK_FAILURE:
@@ -81,25 +80,25 @@ export default function taskReducer(state = defaultState, action) {
       };
 
 
-      case actionTypes.EDIT_TASK_REQUEST:
+    case actionTypes.EDIT_TASK_REQUEST:
       return {
         ...state,
         loading: true,
-        success:null,
-        editTaskSuccess:false
-       
+        success: null,
+        editTaskSuccess: false
+
       };
     case actionTypes.EDIT_TASK_SUCCESS:
-      
+
       const taskIndex = tasks.findIndex(task => task.id === action.task.id);
       tasks[taskIndex] = action.task;
       return {
         ...state,
         loading: false,
         tasks,
-        success:'Task was edited successfully',
-        editTaskSuccess:true
-       
+        success: 'Task was edited successfully',
+        editTaskSuccess: true
+
 
       };
     case actionTypes.EDIT_TASK_FAILURE:
@@ -109,29 +108,24 @@ export default function taskReducer(state = defaultState, action) {
         error: action.error
       };
 
-      
 
-      case actionTypes.DELETE_TASK_REQUEST:
+
+    case actionTypes.DELETE_TASK_REQUEST:
       return {
         ...state,
         loading: true,
-        success:null,
-        deleteTaskSuccess:false
+        success: null,
 
       };
     case actionTypes.DELETE_TASK_SUCCESS:
-      
+
       const taskIndexDelete = tasks.findIndex(task => task.id === action.task.id);
       tasks.splice(taskIndexDelete, 1);
       return {
         ...state,
         loading: false,
         tasks,
-        success:'Task was deleted successfully',
-        deleteTaskSuccess:true,
-       
-       
-       
+        success: 'Task was deleted successfully',
 
       };
     case actionTypes.DELETE_TASK_FAILURE:
@@ -139,48 +133,60 @@ export default function taskReducer(state = defaultState, action) {
         ...state,
         loading: false,
         error: action.error,
-     
-       
       };
-      
 
 
 
-      case actionTypes.DELETE_BULKTASKS_REQUEST:
+
+    case actionTypes.DELETE_BULKTASKS_REQUEST:
       return {
         ...state,
         loading: true,
-        success:null,
-        deleteBulksuccess:false,
-       
-
+        success: null,
+        deleteBulksuccess: false,
       };
     case actionTypes.DELETE_BULKTASKS_SUCCESS:
-      
+
       return {
         ...state,
         loading: false,
         tasks,
-        success:'Tasks were deleted successfully',
-        deleteBulksuccess:true,
-       
-       
-       
-
+        success: 'Tasks were deleted successfully',
+        deleteBulksuccess: true,
       };
     case actionTypes.DELETE_BULKTASKS_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.error,
-     
-       
       };
+
+
+
+    case actionTypes.SEND_CONTACTS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        success: null,
+      };
+    case actionTypes.SEND_CONTACTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        contact: action.contact,
+        success: 'Contact details were accepted successfully',
+
+      };
+    case actionTypes.SEND_CONTACTS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+
 
     default: return state;
   }
 
 
 }
-
-

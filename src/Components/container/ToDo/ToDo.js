@@ -25,7 +25,8 @@ class ToDo extends Component {
 
     componentDidMount() {
         this.props.getTasks();
-    };
+        console.log("ToDo-didmount")
+    }
 
 
     addCheckboxId = (id) => () => {
@@ -38,26 +39,13 @@ class ToDo extends Component {
             tasksId.add(id)
         }
         this.setState({ tasksId })
-    };
+    }
 
     removeBulkHandler = () => {
         const tasksId = [...this.state.tasksId];
         this.props.deleteBulkTasks({ tasks: tasksId })
 
-    };
-
-
-    handleSaveEdit = (id) => (text) => {
-        const tasks = JSON.parse(JSON.stringify(this.state.tasks));
-
-        for (let task of tasks) {
-            if (task.id === id) {
-                task.description = text;
-                break;
-            }
-        }
-        this.setState({ tasks, isEdit: false });
-    };
+    }
 
 
     handleEdit = (taskId) => () => {
@@ -66,54 +54,52 @@ class ToDo extends Component {
             taskIndex: null,
             editTaskIndex: this.props.tasks.findIndex(el => el.id === taskId)
         })
-    };
+    }
 
 
     selectAllHandler = () => {
         const tasksId = this.props.tasks.map(task =>task.id);
         this.setState({ tasksId: new Set(tasksId) });
-    };
+    }
 
     deSelectAllHandler = () => {
         this.setState({ tasksId: new Set() });
-    };
+    }
 
     handleOpenModal = (taskIndex) => () => {
         this.setState({
             taskIndex: taskIndex,
         })
-    };
+    }
 
     handleModalClose = () => {
         this.setState({
             taskIndex: null
         })
-    };
+    }
 
 
     toggleTaskModal = (type) => () => {
         this.setState({ [`show${type}TaskModal`]: !this.state[`show${type}TaskModal`] });
-    };
+    }
 
 
     componentDidUpdate(prevProps) {
         const searchStr = this.props.location.search
         if (prevProps.location.search !== searchStr) {
-
             this.props.getTasks(searchStr);
         }
 
         if (!prevProps.addTaskSuccess && this.props.addTaskSuccess) {
-            this.setState({ showAddTaskModal: false })
+            this.setState({ showAddTaskModal: false });
         }
         if (!prevProps.editTaskSuccess && this.props.editTaskSuccess) {
-            this.setState({ showEditTaskModal: false })
+            this.setState({ showEditTaskModal: false });
         }
         if (!prevProps.deleteBulksuccess && this.props.deleteBulksuccess) {
             this.props.getTasks();
         }
-
-    };
+    }
 
     searchTasks = (data) => {
         let query = '';
@@ -123,10 +109,9 @@ class ToDo extends Component {
                 query += `${key}=${data[key]}&`
             }
         }
-
         this.props.history.push(`/?${query}`);
 
-    };
+    }
 
     deleteTask = (taskId) => () => {
         console.log(taskId)
@@ -136,6 +121,7 @@ class ToDo extends Component {
 
 
     render() {
+       
         const { tasksId, taskIndex } = this.state;
         const { tasks } = this.props;
 
@@ -177,7 +163,6 @@ class ToDo extends Component {
                                 data={tasks[this.state.editTaskIndex]}
                                 open={this.state.showEditTaskModal}
                                 onHide={this.toggleTaskModal('Edit')}
-                            // onEdit={this.handleEdit}
                             />
                             <Search
                                 onSubmit={this.searchTasks} />
@@ -209,7 +194,6 @@ class ToDo extends Component {
                                     className={classes.removeButtons}
                                     variant='danger'
                                     onClick={this.selectAllHandler}
-
                                 >
                                     Select All Tasks
                 </Button>
@@ -249,7 +233,6 @@ const mapStateToProps = (state) => {
         tasks: state.taskReducer.tasks,
         addTaskSuccess: state.taskReducer.addTaskSuccess,
         editTaskSuccess: state.taskReducer.editTaskSuccess,
-        // deleteTaskSuccess:state.taskReducer.deleteTaskSuccess,
         deleteBulksuccess: state.taskReducer.deleteBulksuccess
 
     }

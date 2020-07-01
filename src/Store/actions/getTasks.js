@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import {request} from '../../Helpers/request'
+import {request} from '../../Helpers/request';
 
 export default function getTasks(search = ''){
     return (dispatch)=>{
@@ -12,4 +12,4 @@ export default function getTasks(search = ''){
             dispatch({type: actionTypes.GET_TASKS_FAILURE, error: error.toString()});
         });
     }
-}
+};

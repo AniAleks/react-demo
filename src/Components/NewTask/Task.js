@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{memo} from 'react';
 import classes from './Task.module.css';
 import { Card, Button, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,7 +16,6 @@ function NewTask(props) {
    const deleteTask = () => {
         props.deleteTask(data.id);
     };
-
         
         return (
             <Card className={classes.TaskCard} >
@@ -59,4 +58,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(null, mapDispatchToProps)(NewTask);
+export default connect(null, mapDispatchToProps)(memo(NewTask));
