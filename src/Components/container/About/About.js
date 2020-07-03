@@ -1,12 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import classes from './style.module.css';
 
 
-class About extends PureComponent {
-
-    render() {
-     
-
+function About() {
         return (
 
             <>
@@ -33,7 +29,7 @@ class About extends PureComponent {
                
             </>
         );
-    }
+    
 }
 
-export default About;
+export default memo(About);

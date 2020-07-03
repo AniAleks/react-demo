@@ -5,6 +5,7 @@ import {nameValidator, emailValidator} from '../../../Helpers/validator';
 import { withSnackbar } from 'notistack';
 import {connect} from 'react-redux';
 import sendContacts from '../../../Store/actions/sendContacts';
+import PropTypes from 'prop-types';
 
 
 function Contact(props) {
@@ -90,91 +91,11 @@ function Contact(props) {
             </>
         )
 }
-// class Contact extends Component {
-//     constructor(props) {
-//         super(props);
-    
-//         this.defaultState = {
-//             name: '',
-//             email: '',
-//             message: '',
-//         }
-//         this.state = this.defaultState;
-//     }
-//     submitHandler = () => {
-//         const {name,email, message}=this.state;
-//         const contactData={
-//             name,
-//             email, 
-//             message
-//         }
-//         this.props.sendContacts(contactData);
-//         this.setState(this.defaultState);
 
-//     }
-
-//     inputChangeHandler = (type) => (event) => {
-//         this.setState({
-//             [type]: event.target.value,
-//         });
-//     };
-//     render() {
-
-//        const {name,email,message}=this.state;
-//        const isNameValid = nameValidator(name);
-//         const isEmailValid = emailValidator(email);
-//         return (
-//             <>
-//                 <Container className={classes.container}>
-//                     <Row className='justify-content-md-center'>
-//                         <Col sm='6'>
-//                             <Form>
-
-//                                 <Form.Group as={Col}>
-//                                     <Form.Label className={classes.labelContact}>Your name*</Form.Label>
-//                                     <Form.Control
-//                                     value={name}
-//                                     className={`${!nameValidator(name)? classes.invalid:''} ${classes.inputContact}`}
-//                                     size="sm" type="text" placeholder="Enter Your name" onChange={this.inputChangeHandler('name')} />
-//                                 </Form.Group>
-
-//                                 <Form.Group as={Col} controlId="formGridEmail">
-//                                     <Form.Label className={classes.labelContact}>Email*</Form.Label>
-//                                     <Form.Control type="email" placeholder="Enter email"
-//                                      value={email}
-//                                      className={`${!emailValidator(email)? classes.invalid :''} ${classes.inputContact}`}
-//                                         onChange={this.inputChangeHandler('email')} />
-//                                 </Form.Group>
-
-//                                 <Form.Group   as={Col} controlId="exampleForm.ControlTextarea1">
-//                                     <Form.Label className={classes.labelContact}>Please leave your feedback </Form.Label>
-//                                     <Form.Control as="textarea" rows="3" placeholder="Your feedback"
-//                                     value={message}
-//                                     onChange={this.inputChangeHandler('message')} 
-//                                     className={classes.inputFeedback}
-//                                     />
-//                                 </Form.Group>
-
-//                                 <Button variant="info" onClick={this.submitHandler}
-//                                disabled = {!(isNameValid && isEmailValid)}>
-//                                     Submit
-//                        </Button>
-
-//                             </Form>
-//                         </Col >
-
-
-//                     </Row>
-//                 </Container>
-
-
-
-//             </>
-//         )
-//     }
-// }
-
-
+Contact.propTypes = {
+    submitHandler: PropTypes.func,
+  };
+  
 const mapDispatchToProps = {
     sendContacts
 }

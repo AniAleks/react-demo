@@ -71,7 +71,7 @@ function Search (props){
 
 
   const inputChangeHandler = (event) => {
-    changeState({ ...defaultState,search: event.target.value });
+    changeState({ ...searchState,search: event.target.value });
   };
 
   const submitHandler = (type) => (event)=>{
@@ -96,15 +96,15 @@ function Search (props){
 
   const selectHandler = (type, id, title) => () => {
     if (id === 'none') {
-      changeState({ ...defaultState,[type + 'Id']: '', [type + 'Title']: '' });
+      changeState({ ...searchState,[type + 'Id']: '', [type + 'Title']: '' });
     }
     else {
-      changeState({ ...defaultState,[type + 'Id']: id, [type + 'Title']: title });
+      changeState({ ...searchState,[type + 'Id']: id, [type + 'Title']: title });
     }
   }
 
   const dateChangeHandler = (event) => {
-    changeState({  ...defaultState,date: event.target.value });
+    changeState({ ...searchState,date: event.target.value });
   }
     const { sortId, search, sortTitle, filterTitle, filterId, date } = searchState;
     return (

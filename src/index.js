@@ -12,7 +12,7 @@ import {store} from './Store/store';
 
 
 ReactDOM.render(
-  // <React.StrictMode>
+  <React.StrictMode>
      <Provider store={store}>
     <BrowserRouter>
     <SnackbarProvider maxSnack={2}>
@@ -20,7 +20,7 @@ ReactDOM.render(
 </SnackbarProvider>
 </BrowserRouter>
 </Provider>,
-  // </React.StrictMode>,
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

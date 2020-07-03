@@ -1,21 +1,14 @@
-import React,{useEffect,memo} from 'react';
-import {
-    Modal, Button, Card
-} from 'react-bootstrap'
+import React,{memo} from 'react';
+import { Modal, Button, Card} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faPenAlt, } from '@fortawesome/free-solid-svg-icons';
 import classes from './Modal.module.css';
 import { formatDate } from '../../Helpers/utils';
-
 import PropTypes from 'prop-types';
 
 
 function TaskModal(props) {
     const { taskfulldata } = props;
-
-    useEffect(()=>{
-        console.log('Modal-DidMount, DidUpdate', );
-    });
 
     return (
         <Modal

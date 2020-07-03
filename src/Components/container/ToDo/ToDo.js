@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import getTasks from '../../../Store/actions/getTasks';
 import deleteTask from '../../../Store/actions/deleteTask';
 import deleteBulkTasks from '../../../Store/actions/deleteBulkTasks';
+import PropTypes from 'prop-types';
 
 
 
@@ -25,7 +26,6 @@ class ToDo extends Component {
 
     componentDidMount() {
         this.props.getTasks();
-        console.log("ToDo-didmount")
     }
 
 
@@ -46,7 +46,6 @@ class ToDo extends Component {
         this.props.deleteBulkTasks({ tasks: tasksId })
 
     }
-
 
     handleEdit = (taskId) => () => {
         this.setState({
@@ -96,6 +95,9 @@ class ToDo extends Component {
         if (!prevProps.editTaskSuccess && this.props.editTaskSuccess) {
             this.setState({ showEditTaskModal: false });
         }
+        if (!prevProps.deletesuccess && this.props.deletesuccess) {
+            this.props.getTasks();
+        }
         if (!prevProps.deleteBulksuccess && this.props.deleteBulksuccess) {
             this.props.getTasks();
         }
@@ -114,7 +116,6 @@ class ToDo extends Component {
     }
 
     deleteTask = (taskId) => () => {
-        console.log(taskId)
         this.handleModalClose(taskId);
         this.props.deleteTask(taskId);
     }
@@ -228,12 +229,24 @@ class ToDo extends Component {
 }
 
 
+ToDo.propTypes = {
+    tasks: PropTypes.array,
+    addTaskSuccess: PropTypes.bool,
+    editTaskSuccess: PropTypes.bool,
+    deleteBulksuccess: PropTypes.bool,
+    deletesuccess: PropTypes.bool,
+    getTasks: PropTypes.func,
+    deleteTask: PropTypes.func,
+    deleteBulkTasks: PropTypes.func,
+  };
+
 const mapStateToProps = (state) => {
     return {
         tasks: state.taskReducer.tasks,
         addTaskSuccess: state.taskReducer.addTaskSuccess,
         editTaskSuccess: state.taskReducer.editTaskSuccess,
-        deleteBulksuccess: state.taskReducer.deleteBulksuccess
+        deleteBulksuccess: state.taskReducer.deleteBulksuccess,
+        deletesuccess: state.taskReducer.deletesuccess
 
     }
 }

@@ -1,13 +1,4 @@
 
-
-.TodoBlock{
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-image:url('../../photo-1507525428034-b723cf961d3e.jpeg');
-    background-repeat:no-repeat;
-    background-size: cover;
-}
 .removeButtons{
     width: 270px;
     height: 60px;

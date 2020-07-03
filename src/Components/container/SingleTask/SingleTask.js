@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faPenAlt } from '@fortawesome/free-solid-svg-icons';
 import { Card, Button, InputGroup } from 'react-bootstrap';
 import AddEditModal from '../../AddEditModal/AddEditModal';
+import PropTypes from 'prop-types';
 
 class SingleTask extends Component {
     constructor(props) {
@@ -20,32 +21,24 @@ class SingleTask extends Component {
         }
     }
 
+    componentDidMount() {
+        this.props.getSingleTask(this.props.match.params.id);
+    }
+
+    componentDidUpdate(prevProps) { 
+        if (!prevProps.editTaskSuccess && this.props.editTaskSuccess) {
+            this.setState({ showEditModal: false });
+            this.props.getSingleTask(this.props.match.params.id);
+        }
+    }
     handleEdit = () => {
         this.setState({ showEditModal: true });
     };
 
     toggleTaskModal = (type) => () => {
-
         this.setState({ showEditModal: false });
     };
 
-    handleModalEdit = () => {
-        this.toggleTaskModal();
-        this.props.editTask(this.props.singleTask.id);
-    }
-
-    editTask = () => {
-        const { title, date, description, id } = this.props.singleTask;
-        const data = this.props;
-        const taskData = {};
-
-        (title !== data.title) && (taskData.title = title);
-        (date !== data.date) && (taskData.date = date);
-        (description !== data.description) && (taskData.description = description);
-
-        this.props.editTask(id, taskData);
-
-    }
     deleteTask = () => {
         const taskId = this.props.match.params.id;
         this.props.deleteTask(taskId);
@@ -55,7 +48,6 @@ class SingleTask extends Component {
     render() {
 
         const { singleTask } = this.props;
-
         return (
             <>
 
@@ -101,12 +93,18 @@ class SingleTask extends Component {
     }
 }
 
-
+SingleTask.propTypes = {
+    getSingleTask: PropTypes.func,
+    deleteTask: PropTypes.func,
+    editTask: PropTypes.func,
+    singleTask: PropTypes.object,
+    editTaskSuccess:PropTypes.bool,
+    deleteTaskSuccess:PropTypes.bool,
+  };
 
 const mapStateToProps = (state) => {
     return {
         singleTask: state.taskReducer.singleTask,
-        addTaskSuccess: state.taskReducer.addTaskSuccess,
         editTaskSuccess: state.taskReducer.editTaskSuccess,
         deleteTaskSuccess: state.taskReducer.deleteTaskSuccess,
 

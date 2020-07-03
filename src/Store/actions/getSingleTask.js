@@ -6,7 +6,6 @@ export default function getSingleTask(id){
         dispatch({type: actionTypes.GET_TASK_REQUEST});
         request.get(`/tasks/${id}`)
         .then(res => {
-            console.log(res)
             dispatch({type: actionTypes.GET_TASK_SUCCESS, data: res});
         })
         .catch(error=>{

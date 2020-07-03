@@ -8,6 +8,7 @@ const defaultState = {
   addTaskSuccess: false,
   editTaskSuccess: false,
   deleteBulksuccess: false,
+  deletesuccess: false,
   singleTask: null,
   contact: null,
 
@@ -115,6 +116,7 @@ export default function taskReducer(state = defaultState, action) {
         ...state,
         loading: true,
         success: null,
+        deletesuccess:false
 
       };
     case actionTypes.DELETE_TASK_SUCCESS:
@@ -126,6 +128,7 @@ export default function taskReducer(state = defaultState, action) {
         loading: false,
         tasks,
         success: 'Task was deleted successfully',
+        deletesuccess:true
 
       };
     case actionTypes.DELETE_TASK_FAILURE:
